@@ -1,0 +1,9 @@
+Easy|You find a lost wallet on the street. What should you do?|Keep the cash;Leave it there;Give it to the police;Take it home|c|Turning it in to the police respects ownership and trust.
+Easy|You see someone drop their phone. What’s the right thing to do?|Ignore it;Take it for yourself;Return it quietly;Laugh and walk away|c|Returning someone’s lost item shows integrity and respect.
+Easy|You copied answers during a test and weren’t caught. What should you do?|Admit what you did;Forget it happened;Blame someone else;Tell your friends|a|Being honest about mistakes shows responsibility and builds trust.
+Medium|Your friend is stealing snacks from a store. What should you do?|Join them;Pretend not to see;Tell a responsible adult;Film it for fun|c|Telling a trusted adult helps stop wrongdoing and keeps everyone accountable.
+Medium|You find a copy of tomorrow’s test online. What’s the ethical thing to do?|Use it;Share it with classmates;Report it to your teacher;Delete it silently|c|Reporting it ensures a fair and honest test for everyone.
+Medium|A classmate is being bullied in a group chat. What should you do?|Say nothing;Join in;Tell a teacher or adult;Make jokes about it|c|Reporting cyberbullying protects the victim and promotes a safe environment.
+Hard|You’re asked to lie on a scholarship application to help a friend. What should you do?|Lie to help them;Ignore the request;Report the lie;Do it quietly|c|Lying on official applications is unethical and should be reported.
+Hard|Your sibling tells you they vandalized school property. What should you do?|Keep it secret;Blame another student;Encourage them to tell the truth;Ignore it|c|Helping them take responsibility is the ethical thing to do.
+Hard|A company offers you money to stay silent about illegal dumping. What should you do?|Accept the money;Report them to authorities;Stay quiet to avoid trouble;Ask for more money|b|Reporting pollution protects the community and environment.
