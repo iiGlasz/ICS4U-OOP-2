@@ -11,7 +11,7 @@ public class Leaderboard {
         allScores = new File("src/data/" + filename);
         users = new ArrayList<>();
 
-        if (allScores.exists()) {
+        if (allScores.exists()){
             readFile(filename);
         } else {
             System.out.println("Leaderboard file not found. A new one will be created when updated.");
@@ -19,6 +19,7 @@ public class Leaderboard {
     }
 
     public void addUser(User newUser) {
+        readFile("leaderboard.txt");
         for (int i = 0; i < users.size(); i++) {
             User existingUser = users.get(i);
             if (existingUser.getName().equals(newUser.getName())) {

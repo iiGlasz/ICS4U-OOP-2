@@ -26,7 +26,8 @@ public class MainUI extends javax.swing.JFrame {
     private final ArrayList<Question> mediumQuestions = new ArrayList<>();
     private final ArrayList<Question> hardQuestions = new ArrayList<>();
     private final Leaderboard leaderboardObj = new Leaderboard("leaderboard.txt");
-
+    
+    
     public MainUI() {
         initComponents();
         loadQuestionsFromFile();
@@ -62,14 +63,23 @@ public class MainUI extends javax.swing.JFrame {
         leaderboard = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         feedback = new javax.swing.JTextArea();
+        multipleAnswer = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1092, 818));
+        getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Feedback:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(70, 536, 138, 32);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("Username:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(666, 81, 149, 51);
 
         buttonA.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonA.setText("a)");
@@ -78,6 +88,8 @@ public class MainUI extends javax.swing.JFrame {
                 buttonAActionPerformed(evt);
             }
         });
+        getContentPane().add(buttonA);
+        buttonA.setBounds(70, 104, 72, 39);
 
         buttonC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonC.setText("c)");
@@ -86,6 +98,8 @@ public class MainUI extends javax.swing.JFrame {
                 buttonCActionPerformed(evt);
             }
         });
+        getContentPane().add(buttonC);
+        buttonC.setBounds(70, 218, 72, 39);
 
         buttonD.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonD.setText("d)");
@@ -94,6 +108,8 @@ public class MainUI extends javax.swing.JFrame {
                 buttonDActionPerformed(evt);
             }
         });
+        getContentPane().add(buttonD);
+        buttonD.setBounds(70, 275, 72, 39);
 
         buttonB.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonB.setText("b)");
@@ -102,15 +118,23 @@ public class MainUI extends javax.swing.JFrame {
                 buttonBActionPerformed(evt);
             }
         });
+        getContentPane().add(buttonB);
+        buttonB.setBounds(70, 161, 72, 39);
 
         ansB.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         ansB.setText("Answer B");
+        getContentPane().add(ansB);
+        ansB.setBounds(160, 161, 830, 39);
 
         ansD.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         ansD.setText("Answer D");
+        getContentPane().add(ansD);
+        ansD.setBounds(160, 275, 840, 39);
 
         ansC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         ansC.setText("Answer C");
+        getContentPane().add(ansC);
+        ansC.setBounds(160, 218, 830, 39);
 
         skip.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         skip.setText("Next");
@@ -119,12 +143,18 @@ public class MainUI extends javax.swing.JFrame {
                 skipActionPerformed(evt);
             }
         });
+        getContentPane().add(skip);
+        skip.setBounds(212, 439, 158, 39);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setText("Leaderboard");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(563, 527, 280, 51);
 
         ansA1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         ansA1.setText("Answer A");
+        getContentPane().add(ansA1);
+        ansA1.setBounds(160, 110, 810, 39);
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         username.setText("Enter User");
@@ -133,6 +163,8 @@ public class MainUI extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
+        getContentPane().add(username);
+        username.setBounds(827, 87, 180, 38);
 
         difficulty.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         difficulty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Easy", "Medium", "Hard" }));
@@ -141,6 +173,8 @@ public class MainUI extends javax.swing.JFrame {
                 difficultyActionPerformed(evt);
             }
         });
+        getContentPane().add(difficulty);
+        difficulty.setBounds(666, 25, 231, 38);
 
         question.setColumns(20);
         question.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -149,134 +183,68 @@ public class MainUI extends javax.swing.JFrame {
         question.setText("Question:");
         jScrollPane1.setViewportView(question);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(70, 25, 535, 73);
+
         leaderboard.setColumns(20);
         leaderboard.setLineWrap(true);
         leaderboard.setRows(5);
         jScrollPane2.setViewportView(leaderboard);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(563, 606, 463, 169);
 
         feedback.setColumns(20);
         feedback.setLineWrap(true);
         feedback.setRows(5);
         jScrollPane3.setViewportView(feedback);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(buttonA)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(ansA1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(85, 85, 85))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(355, 355, 355)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(66, 66, 66)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonB)
-                                .addGap(18, 18, 18)
-                                .addComponent(ansB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buttonC)
-                                    .addComponent(buttonD))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ansC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ansD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(142, 142, 142)
-                                .addComponent(skip, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(169, 169, 169))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(80, 80, 80)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(549, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonA)
-                            .addComponent(ansA1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonB)
-                    .addComponent(ansB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonC)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonD))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ansC, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ansD, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(109, 109, 109)
-                .addComponent(skip)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(606, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(43, 43, 43)))
-        );
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(80, 606, 463, 169);
+
+        multipleAnswer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ab", "ac", "ad", "bc", "bd", "cd", "abc", "abd", "acd", "bcd", "abcd" }));
+        multipleAnswer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multipleAnswerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(multipleAnswer);
+        multipleAnswer.setBounds(240, 340, 100, 30);
+
+        jLabel1.setText("Multiply Select Answers:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(80, 340, 150, 30);
+
+        jButton1.setText("Submit Choices");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(350, 340, 140, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAActionPerformed
-        handleAnswer("a");
+        if (!(currentQuestion instanceof MultipleSelect))
+            handleAnswer("a");
     }//GEN-LAST:event_buttonAActionPerformed
 
     private void buttonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCActionPerformed
-        handleAnswer("c");
+        if (!(currentQuestion instanceof MultipleSelect))
+            handleAnswer("c");
     }//GEN-LAST:event_buttonCActionPerformed
 
     private void buttonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDActionPerformed
-        handleAnswer("d");
+        if (!(currentQuestion instanceof MultipleSelect))
+            handleAnswer("d");
     }//GEN-LAST:event_buttonDActionPerformed
 
     private void buttonBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBActionPerformed
-        handleAnswer("b");
+        if (!(currentQuestion instanceof MultipleSelect))
+            handleAnswer("b");
     }//GEN-LAST:event_buttonBActionPerformed
 
     private void skipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipActionPerformed
@@ -292,35 +260,61 @@ public class MainUI extends javax.swing.JFrame {
         showNextQuestion();
     }//GEN-LAST:event_difficultyActionPerformed
 
-    
-    
-      private void loadQuestionsFromFile() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                getClass().getResourceAsStream("/quizapp/questions.txt")))) {
+    private void multipleAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multipleAnswerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_multipleAnswerActionPerformed
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\|");
-                if (parts.length != 5) continue;
-
-                String level = parts[0];
-                String qText = parts[1];
-                String[] answers = parts[2].split(";");
-                String correct = parts[3];
-                String feedbackText = parts[4];
-
-                Question q = new MultipleChoice(qText, answers, correct.toLowerCase(), feedbackText);
-
-                switch (level) {
-                    case "Easy" -> easyQuestions.add(q);
-                    case "Medium" -> mediumQuestions.add(q);
-                    case "Hard" -> hardQuestions.add(q);
-                }
-            }
-        } catch (Exception e) {
-            question.setText("Could not load questions.");
-            e.printStackTrace();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (currentQuestion instanceof MultipleSelect){
+            String multipleSelectAnswer = (String) multipleAnswer.getSelectedItem();
+            handleAnswer(multipleSelectAnswer);
         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    
+    private void loadQuestionsFromFile() {
+      try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+              getClass().getResourceAsStream("/quizapp/questions.txt")))) {
+
+          String line;
+          while ((line = reader.readLine()) != null) {
+              String[] parts = line.split("\\|");
+              if (parts.length != 6) continue;
+
+              String level = parts[0];
+              String qText = parts[1];
+              String[] answers = parts[2].split(";");
+              String correct = parts[3];
+              String feedbackText = parts[4];
+              String questionType = parts[5];
+              
+              Question q;
+              switch (questionType) {
+                case "MC":
+                  q = new MultipleChoice(qText, answers, correct.toLowerCase(), feedbackText);
+                  break;
+                case "TF":
+                  q = new TrueFalse(qText, answers, correct.toLowerCase(), feedbackText);
+                  break;
+                case "MS":           
+                  q = new MultipleSelect(qText, answers, correct.toLowerCase(), feedbackText);
+                  break;
+                default:
+                    throw new IllegalArgumentException("Unknown question type: " + questionType);
+              }
+
+              switch (level) {
+                  case "Easy" -> easyQuestions.add(q);
+                  case "Medium" -> mediumQuestions.add(q);
+                  case "Hard" -> hardQuestions.add(q);
+              }
+          }
+      } catch (Exception e) {
+          question.setText("Could not load questions.");
+          e.printStackTrace();
+      }
     }
 
     private void handleAnswer(String choice) {
@@ -400,6 +394,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonD;
     private javax.swing.JComboBox<String> difficulty;
     private javax.swing.JTextArea feedback;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -407,6 +403,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea leaderboard;
+    private javax.swing.JComboBox<String> multipleAnswer;
     private javax.swing.JTextArea question;
     private javax.swing.JButton skip;
     private javax.swing.JTextField username;
