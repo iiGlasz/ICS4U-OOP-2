@@ -20,18 +20,27 @@ import javax.swing.SwingUtilities;
  */
 public class MainUI extends javax.swing.JFrame {
 
+    // current question being shown
     private Question currentQuestion;
+
+    // current user playing
     private User currentUser;
+
+    // question lists by difficulty
     private final ArrayList<Question> easyQuestions = new ArrayList<>();
     private final ArrayList<Question> mediumQuestions = new ArrayList<>();
     private final ArrayList<Question> hardQuestions = new ArrayList<>();
+
+    // leaderboard handler
     private final Leaderboard leaderboardObj = new Leaderboard("leaderboard.txt");
-    
-    
+
+    /**
+     * initializes UI and loads questions
+     */
     public MainUI() {
         initComponents();
-        loadQuestionsFromFile();
-        showNextQuestion();
+        loadQuestionsFromFile(); // load from txt
+        showNextQuestion();      // show first question
     }
 
     /**
@@ -274,59 +283,61 @@ public class MainUI extends javax.swing.JFrame {
 
     
     
+     /**
+     * loads questions from file and sorts by type + difficulty
+     */
     private void loadQuestionsFromFile() {
-      try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-              getClass().getResourceAsStream("/quizapp/questions.txt")))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                getClass().getResourceAsStream("/quizapp/questions.txt")))) {
 
-          String line;
-          while ((line = reader.readLine()) != null) {
-              String[] parts = line.split("\\|");
-              if (parts.length != 6) continue;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length != 6) continue;
 
-              String level = parts[0];
-              String qText = parts[1];
-              String[] answers = parts[2].split(";");
-              String correct = parts[3];
-              String feedbackText = parts[4];
-              String questionType = parts[5];
-              
-              Question q;
-              switch (questionType) {
-                case "MC":
-                  q = new MultipleChoice(qText, answers, correct.toLowerCase(), feedbackText);
-                  break;
-                case "TF":
-                  q = new TrueFalse(qText, answers, correct.toLowerCase(), feedbackText);
-                  break;
-                case "MS":           
-                  q = new MultipleSelect(qText, answers, correct.toLowerCase(), feedbackText);
-                  break;
-                default:
-                    throw new IllegalArgumentException("Unknown question type: " + questionType);
-              }
+                String level = parts[0];
+                String qText = parts[1];
+                String[] answers = parts[2].split(";");
+                String correct = parts[3];
+                String feedbackText = parts[4];
+                String questionType = parts[5];
 
-              switch (level) {
-                  case "Easy" -> easyQuestions.add(q);
-                  case "Medium" -> mediumQuestions.add(q);
-                  case "Hard" -> hardQuestions.add(q);
-              }
-          }
-      } catch (Exception e) {
-          question.setText("Could not load questions.");
-          e.printStackTrace();
-      }
+                // create question by type
+                Question q = switch (questionType) {
+                    case "MC" -> new MultipleChoice(qText, answers, correct, feedbackText);
+                    case "TF" -> new TrueFalse(qText, answers, correct, feedbackText);
+                    case "MS" -> new MultipleSelect(qText, answers, correct, feedbackText);
+                    default -> throw new IllegalArgumentException("Unknown type: " + questionType);
+                };
+
+                // sort into difficulty list
+                switch (level) {
+                    case "Easy" -> easyQuestions.add(q);
+                    case "Medium" -> mediumQuestions.add(q);
+                    case "Hard" -> hardQuestions.add(q);
+                }
+            }
+        } catch (Exception e) {
+            question.setText("Could not load questions.");
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * handles the user answer, updates score, feedback, and leaderboard
+     *
+     * @param choice user's answer
+     */
     private void handleAnswer(String choice) {
         if (currentQuestion == null) return;
 
         String name = username.getText().trim();
         if (name.isEmpty()) name = "___";
 
-        if (currentUser == null) {
-            currentUser = new User(0, name);
-        }
+        // create user if new
+        if (currentUser == null) currentUser = new User(0, name);
 
+        // get difficulty setting
         String selectedDifficulty = (String) difficulty.getSelectedItem();
         Difficulty diff = switch (selectedDifficulty) {
             case "Easy" -> new Difficulty("Easy", 1.0);
@@ -335,6 +346,7 @@ public class MainUI extends javax.swing.JFrame {
             default -> new Difficulty("Easy", 1.0);
         };
 
+        // check answer
         boolean correct = currentQuestion.isCorrect(choice);
         if (correct) {
             int score = (int) currentQuestion.calculateScore(choice, diff);
@@ -346,15 +358,16 @@ public class MainUI extends javax.swing.JFrame {
         leaderboard.setText(leaderboardObj.getFormattedTopUsers());
         leaderboard.setCaretPosition(0);
 
-        showNextQuestion();
+        showNextQuestion(); // load next
     }
 
-
-
-
+    /**
+     * displays the next question based on difficulty
+     */
     private void showNextQuestion() {
         String level = (String) difficulty.getSelectedItem();
 
+        // get next question by level
         if (level.equals("Easy") && !easyQuestions.isEmpty()) {
             currentQuestion = easyQuestions.remove(0);
         } else if (level.equals("Medium") && !mediumQuestions.isEmpty()) {
@@ -367,6 +380,7 @@ public class MainUI extends javax.swing.JFrame {
             return;
         }
 
+        // update UI
         question.setText("Question: " + currentQuestion.getQuestionText());
         String[] answers = currentQuestion.getAnswers();
         ansA1.setText("a) " + answers[0]);
@@ -374,10 +388,9 @@ public class MainUI extends javax.swing.JFrame {
         ansC.setText("c) " + answers[2]);
         ansD.setText("d) " + answers[3]);
     }
-    
-    
+
     /**
-     * @param args the command line arguments
+     * main method to run the quiz UI
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new MainUI().setVisible(true));
